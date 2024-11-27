@@ -1,0 +1,55 @@
+Secure Code Review Project
+Task Overview
+This project focuses on secure code review by identifying vulnerabilities in Python code. I created a script (reiman.py) and utilized the Bandit security analysis tool to review the code for security risks and adherence to best practices.
+
+How to Use Bandit for Code Review
+Prerequisites
+Ensure Python is installed.
+Install Bandit using pip:
+bash
+Copy code
+pip install bandit
+Running Bandit
+Clone the Repository:
+
+bash
+Copy code
+git clone <repository-url>
+cd <repository-folder>
+Review the Code:
+Run Bandit recursively on the Python file:
+
+bash
+Copy code
+bandit -r reiman.py
+Analyze the Results:
+Bandit will output a list of potential security issues along with severity levels and recommendations.
+
+Example:
+
+plaintext
+Copy code
+[B101] Use of assert detected. The enclosed code will be removed when compiling to optimized byte code.
+Location: ./reiman.py:15
+Severity: Medium   Confidence: High
+Example Output
+Here’s a sample result of running Bandit on reiman.py:
+
+plaintext
+Copy code
+Run started: 2024-11-27 14:00:00
+
+Test results:
+>> Issue: [B303] Use of insecure MD5 hash function.
+   Severity: High   Confidence: High
+   Location: ./reiman.py:23
+
+>> Issue: [B404] Import of subprocess module detected. Consider using safer alternatives.
+   Severity: Medium   Confidence: Medium
+   Location: ./reiman.py:45
+Fixing Issues
+Follow Bandit’s suggestions to fix identified vulnerabilities:
+
+Replace insecure hashing algorithms like MD5 with SHA-256.
+Avoid using assert in production environments.
+Use safer practices for command execution, such as sanitizing inputs in subprocess.run().
